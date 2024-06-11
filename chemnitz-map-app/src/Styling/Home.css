@@ -1,0 +1,105 @@
+/* General styling */
+.homepage-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .header, .footer {
+    background-color: #007bff;
+    /* color: white; */
+    padding: 10px 20px;
+    text-align: center;
+  }
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-info span {
+    margin-right: 20px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .header h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  .logout-button {
+    color: black;
+    padding: 10px;
+    background-color: #d0d5da;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 50%;
+  }
+  
+  .logout-button:hover {
+    background-color: #c0c5ca;
+  }
+  
+  .body-content {
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden; /* Ensure the content doesn't overflow */
+  }
+  
+  .map-container {
+    width: 70%; /* 70% of the width */
+    height: 100%;
+  }
+  
+  .sidebar {
+    width: 30%;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-left: 1px solid #ccc;
+  }
+  
+  .footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ccc;
+  }
+  
+  form > div {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    /* width: 100%; */
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
