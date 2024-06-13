@@ -27,23 +27,77 @@ const HomePage = () => {
     navigate('/login'); // Redirect to login page
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // This function should set homeCoordinates after geocoding homeAddress
-    geocodeAddress(homeAddress);
-  };
-
-  const geocodeAddress=async(address)=>{
-    const provider=new OpenStreetMapProvider();
-    const results=await provider.search({query:address});
-    if(results && results.length>0){
-      const{x,y}=results[0];
-      setHomeCoordinates([y,x]);
-    }else{
+    const results = await geocodeAddress(homeAddress);
+    if (results && results.length > 0) {
+      const { x, y } = results[0];
+      const coordinates = [y, x];
+      setHomeCoordinates(coordinates);
+      updateHomeAddress(homeAddress, { type: 'Point', coordinates });
+    } else {
       alert('Address Not Found!');
     }
   };
 
+  const geocodeAddress = async (address) => {
+    const provider = new OpenStreetMapProvider();
+    const results = await provider.search({ query: address });
+    return results;
+  };
+  const updateFavoriteFacility = async (favoriteFacility) => {
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+
+    try {
+      const response = await fetch('/api/user/updateFavoriteFacility', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({ userId, favoriteFacility }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setFavouriteFacility(data.favoriteFacility);
+      } else {
+        console.error(data.error);
+      }
+    } catch (error) {
+      console.error('Error updating favorite facility:', error);
+    }
+  };
+
+  const updateHomeAddress = async (homeAddress, homeCoordinates) => {
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+
+    try {
+      const response = await fetch('/api/user/updateHomeAddress', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({ userId, homeAddress, homeCoordinates }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setHomeAddress(data.homeAddress);
+        setHomeCoordinates(data.homeCoordinates.coordinates);
+      } else {
+        console.error(data.error);
+      }
+    } catch (error) {
+      console.error('Error updating home address:', error);
+    }
+  };
+  const handleFavouriteChange = (e) => {
+    const selectedFacility = e.target.value;
+    setFavouriteFacility(selectedFacility);
+    updateFavoriteFacility(selectedFacility);
+  };
   return (
     <div className='homepage-container'>
       <header className='header'>
@@ -71,7 +125,7 @@ const HomePage = () => {
           <form onSubmit={handleSubmit}>
             <div>
               <label>Favourite Facility</label>
-              <select value={favouriteFacility} onChange={(e) => setFavouriteFacility(e.target.value)}>
+              <select value={favouriteFacility} onChange={handleFavouriteChange}>
                 <option value="">Select a Facility</option>
                 <option value="schools">Schools</option>
                 <option value="kindergardens">Kindergardens</option>

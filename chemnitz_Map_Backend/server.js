@@ -20,7 +20,10 @@ app.use(bodyParser.json());
 const mongoURI='mongodb://localhost:27017/ChemnitzData';
 
 //connect to mongodb
-mongoose.connect(mongoURI,{useNewUrlParser:true ,useUnifiedTopology: true})
+mongoose.connect(mongoURI,{useNewUrlParser:true ,useUnifiedTopology: true,serverSelectionTimeoutMS: 5000, // Timeout for server selection
+  socketTimeoutMS: 30000, // Socket timeout
+  connectTimeoutMS: 30000, // Connection timeout
+  })
 .then(()=>console.log('Connect To MongoDB'))
 .catch(err=>console.log('Error Connecting to MongoDB:',err));
 
@@ -36,6 +39,8 @@ const kindergardenRoutes=require('./routes/kindergardens');
 const SocialChildProjectRoutes=require('./routes/socialchildprojects');
 const SocialTeenagerProjectRoutes=require('./routes/socialteenagerprojects');
 const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/user');
+const { protect } = require('./middleware/auth');
 
 //use routes
 app.use('/api/schools',schoolRoutes);
@@ -43,6 +48,7 @@ app.use('/api/kindergardens',kindergardenRoutes);
 app.use('/api/socialchildprojects',SocialChildProjectRoutes);
 app.use('/api/socialteenagerprojects',SocialTeenagerProjectRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/user', protect, userRoutes);
 
 //start the server
 app.listen(port,()=>{

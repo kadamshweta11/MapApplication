@@ -7,7 +7,7 @@ const router=express.Router();
 
 //Register a New User
 router.post('/register',async(req,res)=>{
-    const {username,email,password}=req.body;
+    const {username,email,password,favoriteFacility, homeAddress}=req.body;
     console.log('Register endpoint hit');  
 
     try{
@@ -29,6 +29,12 @@ router.post('/register',async(req,res)=>{
             username,
             email,
             password,
+            favoriteFacility, // Add favoriteFacility to the new user object
+            homeAddress, // Add homeAddress to the new user object
+            homeCoordinates: {
+                type: 'Point', // Adjust as per your schema
+                coordinates: [0, 0], // Example coordinates; adjust as needed
+            },
         });
         await user.save();
         console.log('User saved');  // Debugging statement

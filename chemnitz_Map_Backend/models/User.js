@@ -21,6 +21,22 @@ const UserSchema=new mongoose.Schema({
         type:Date,
         default:Date.now,
     },
+    favoriteFacility: { 
+        type: String, 
+        default: '' ,
+    },
+  homeAddress: { 
+    type: String, 
+    default: '' ,
+    },
+    homeCoordinates: {
+    type: { type: String, enum: ['Point'],required: true,
+
+     },
+    coordinates: { type: [Number], required: true,
+        
+     },
+  },
 });
 
 //Hash password before saving
@@ -36,5 +52,5 @@ const UserSchema=new mongoose.Schema({
 // UserSchema.methods.matchPassword=async function(enteredPassword){
 //     return await bcrypt.compare(enteredPassword,this.password);
 // };
-
+UserSchema.index({ homeCoordinates: '2dsphere' });
 module.exports=mongoose.model('User',UserSchema);
