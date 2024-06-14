@@ -2,6 +2,7 @@ const express=require('express');
 const User=require('../models/User');
 const jwt=require('jsonwebtoken');
 const bcrypt=require('bcryptjs');
+const axios = require('axios');
 
 const router=express.Router();
 
@@ -9,7 +10,7 @@ const router=express.Router();
 router.post('/register',async(req,res)=>{
     const {username,email,password,favoriteFacility, homeAddress}=req.body;
     console.log('Register endpoint hit');  
-
+    const openCageApiKey = process.env.OPENCAGE_API_KEY;
     try{
         const userExists=await User.findOne({email});
         if(userExists){
@@ -21,6 +22,9 @@ router.post('/register',async(req,res)=>{
          if (!password || password.trim().length === 0) {
             return res.status(400).json({ message: 'Password cannot be empty' });
         }
+        // Geocode the home address
+    const response = await axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(homeAddress)}&key=${openCageApiKey}`);
+    const { lat, lng } = response.data.results[0].geometry;
 
         // const salt = await bcrypt.genSalt(10);
         // const hashedPassword = await bcrypt.hash(password, salt);
@@ -33,7 +37,7 @@ router.post('/register',async(req,res)=>{
             homeAddress, // Add homeAddress to the new user object
             homeCoordinates: {
                 type: 'Point', // Adjust as per your schema
-                coordinates: [0, 0], // Example coordinates; adjust as needed
+                coordinates: [lng, lat], // Example coordinates; adjust as needed
             },
         });
         await user.save();

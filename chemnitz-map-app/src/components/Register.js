@@ -16,9 +16,19 @@ const Register=()=>{
 
     const handleSubmit=async(e)=>{
         e.preventDefault();
+
+        if (!username || !email || !password || !favoriteFacility || !homeAddress) {
+            setMessage('All fields are required');
+            return;
+        }
+
         try{
-            const res=await axios.post('http://localhost:5000/api/auth/register',{username,email,password,favoriteFacility,homeAddress});
+            const res=await axios.post('http://localhost:5000/api/auth/register',
+                {username,email,password,favoriteFacility,homeAddress});
             setMessage(res.data.message);
+            if (res.data.success) {
+                navigate('/login');
+            }
         }catch(error){
             console.error('Error during registration:', error);
             setMessage('Error Registering User');
