@@ -2,7 +2,7 @@
 const express = require('express');
 const User = require('../models/User');
 const { protect } = require('../middleware/auth');
-
+const { updateUser } = require('../controllers/userController');
 const router = express.Router();
 
 router.put('/updateFavoriteFacility', protect, async (req, res) => {
@@ -38,6 +38,30 @@ router.put('/updateHomeAddress', protect, async (req, res) => {
       res.status(500).json({ error: 'Server error' });
   }
 });
+
+//update the user
+// PUT /api/user/:id
+router.put('/:id', protect, updateUser);
+
+// DELETE user by ID
+router.delete('/:id', async (req, res) => {
+  const userId = req.params.id;
+
+  try {
+    // Find user by ID and delete
+    const deletedUser = await User.findByIdAndDelete(userId);
+
+    if (!deletedUser) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    res.json({ message: 'User deleted successfully', deletedUser });
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 
 router.get('/:userId', async (req, res) => {
   const userId = req.params.userId;
