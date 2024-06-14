@@ -43,3 +43,31 @@ export const getSocialChildProjects = async () => {
   };
 
 
+  // export const getUserDataByEmail = async (email) => {
+  //   const token = localStorage.getItem('token');
+  //   try {
+  //     const response = await axios.get(`http://localhost:5000/api/user/byEmail/${email}`, {
+  //       headers: {
+  //         'Authorization': `Bearer ${token}`,
+  //       },
+  //     });
+  //     return response.data;
+  //   } catch (error) {
+  //     console.error('Error fetching user data by email:', error);
+  //     throw error;
+  //   }
+  // };
+  export const getUserDataById = async (userId) => {
+    const token = localStorage.getItem('token');
+    try {
+      const response = await axios.get(`${API_URL}/user/${userId}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.log('Error fetching user data by ID:', error);
+      throw error;
+    }
+  };

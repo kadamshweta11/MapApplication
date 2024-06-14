@@ -1,9 +1,9 @@
 import React,{useState,useEffect} from 'react';
 import MapView from '../components/MapView';
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { Link,useNavigate } from 'react-router-dom'; // Import useNavigate
 import '../Styling/Home.css'; // Import the CSS file for styling
-
+// import { getUserDataByEmail } from '../api';
 
 const HomePage = () => {
   const[favouriteFacility,setFavouriteFacility]=useState('');
@@ -19,6 +19,18 @@ const HomePage = () => {
     if (storedUsername) {
       setUsername(storedUsername);
     }
+    // Fetch user data by email
+    // const email = localStorage.getItem('username');
+    // if (email) {
+    //   getUserDataByEmail(email).then(data => {
+    //     setFavouriteFacility(data.favoriteFacility);
+    //     setHomeAddress(data.homeAddress);
+    //     setHomeCoordinates(data.homeCoordinates.coordinates);
+    //   }).catch(error => {
+    //     console.error('Error fetching user data:', error);
+    //   });
+    // }
+
   }, []);
 
   const handleLogout = () => {
@@ -48,9 +60,9 @@ const HomePage = () => {
   const updateFavoriteFacility = async (favoriteFacility) => {
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
-
+    console.log('User ID from localStorage:', userId);
     try {
-      const response = await fetch('/api/user/updateFavoriteFacility', {
+      const response = await fetch('http://localhost:5000/api/user/updateFavoriteFacility', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -62,7 +74,7 @@ const HomePage = () => {
       if (response.ok) {
         setFavouriteFacility(data.favoriteFacility);
       } else {
-        console.error(data.error);
+        console.log(data.error);
       }
     } catch (error) {
       console.error('Error updating favorite facility:', error);
@@ -72,9 +84,9 @@ const HomePage = () => {
   const updateHomeAddress = async (homeAddress, homeCoordinates) => {
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
-
+    console.log('User ID from localStorage:', userId);
     try {
-      const response = await fetch('/api/user/updateHomeAddress', {
+      const response = await fetch('http://localhost:5000/api/user/updateHomeAddress', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -87,7 +99,7 @@ const HomePage = () => {
         setHomeAddress(data.homeAddress);
         setHomeCoordinates(data.homeCoordinates.coordinates);
       } else {
-        console.error(data.error);
+        console.log(data.error);
       }
     } catch (error) {
       console.error('Error updating home address:', error);
@@ -122,6 +134,16 @@ const HomePage = () => {
            />
         </div>
         <div className="sidebar">
+        {/* <div>
+            <h3>User Information:</h3>
+            <p><strong>Username:</strong> {username}</p>
+            <p><strong>Home Address:</strong> {homeAddress}</p>
+            <p><strong>Favorite Facility:</strong>{favouriteFacility}</p>
+            {homeCoordinates && (
+              <p><strong>Home Coordinates:</strong> Latitude: {homeCoordinates[0]}, Longitude: {homeCoordinates[1]}</p>
+            )}
+          </div> */}
+           <Link to="/userprofile">View Profile</Link>
           <form onSubmit={handleSubmit}>
             <div>
               <label>Favourite Facility</label>

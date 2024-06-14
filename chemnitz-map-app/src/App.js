@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import FacilityPage from './pages/FacilityPage';
 import Register from './components/Register';
 import Login from './components/Login';
+import UserProfilePage from './components/UserProfilePage';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/facility/:id" element={<FacilityPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/userprofile" element={<UserProfilePage />} />
       </Routes>
     </Router>
   );

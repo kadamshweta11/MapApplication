@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 // import './Card';
 import "../Styling/Login.css";
+import {getUserDataById} from '../api';
 
 
  const Login=()=>{
@@ -23,15 +24,27 @@ const handleLogin=async(data)=>{
         console.log('Login response:', response.data); 
         if (response.data.message === 'User Logged In successfully') {
           console.log("Log In Successful");
-          setSuccess('Login Successful!');
+          const { token, userId } = response.data;
+      
+      // Store token and userId in localStorage
+      localStorage.setItem('token', token);
+      localStorage.setItem('userId', userId);
+      localStorage.setItem('username', email);
+      // Fetch user data after successful login
+      // Fetch user data after successful login
+      const userData = await getUserDataById(userId); // Ensure userId is available here
+      console.log('User Data:', userData);
+      setSuccess('Login Successful!');
           setError(''); // clear error message
-          localStorage.setItem('token', response.data.token);
+          // localStorage.setItem('token', response.data.token);
           // Retrieve username from the form data
-      const storedUsername = email;
+      // const storedUsername = email;
       
           // Store username in local storage
-      localStorage.setItem('username', storedUsername);
-
+      // localStorage.setItem('username', storedUsername);
+      // console.log('User Data:', userDataResponse.data); // Log user data for verification
+      // Optionally store user data in localStorage or state
+      // localStorage.setItem('userData', JSON.stringify(userDataResponse.data));
           // window.location.href = '/';
           navigate('/'); // Redirect to home page
         } else {
@@ -39,7 +52,7 @@ const handleLogin=async(data)=>{
           setSuccess(''); // clear success message
         }
     }catch(error){
-        console.error('Error during login:', error);
+        console.log('Error during login:', error);
       setError('Invalid credentials. Please try again.');
       setSuccess(''); // clear success message
     }

@@ -40,7 +40,7 @@ const SocialChildProjectRoutes=require('./routes/socialchildprojects');
 const SocialTeenagerProjectRoutes=require('./routes/socialteenagerprojects');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
-const { protect } = require('./middleware/auth');
+// const { protect } = require('./middleware/auth');
 
 //use routes
 app.use('/api/schools',schoolRoutes);
@@ -48,7 +48,7 @@ app.use('/api/kindergardens',kindergardenRoutes);
 app.use('/api/socialchildprojects',SocialChildProjectRoutes);
 app.use('/api/socialteenagerprojects',SocialTeenagerProjectRoutes);
 app.use('/api/auth', authRoutes);
-app.use('/api/user', protect, userRoutes);
+app.use('/api/user',  userRoutes);
 
 //start the server
 app.listen(port,()=>{
