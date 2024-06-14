@@ -30,7 +30,7 @@ const UserProfilePage = () => {
   if (!userData) {
     return <div>Loading...</div>; // Placeholder for loading state
   }
-
+//   const { username, email, favoriteFacility, homeAddress, homeCoordinates } = userData;
   return (
     <div>
       <h2>User Profile</h2>
@@ -38,6 +38,7 @@ const UserProfilePage = () => {
       <p>Email: {userData.email}</p>
       <p>Favorite Facility: {userData.favoriteFacility}</p>
       <p>Home Address: {userData.homeAddress}</p>
+      <p>Home Coordinates: {userData.homeCoordinates.coordinates.join(', ')}</p>
       {/* Additional fields as needed */}
     </div>
   );
