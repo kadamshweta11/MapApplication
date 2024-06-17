@@ -6,6 +6,7 @@ import FacilityPage from './pages/FacilityPage';
 import Register from './components/Register';
 import Login from './components/Login';
 import UserProfilePage from './components/UserProfilePage';
+import NavBar from '../src/components/NavBar';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 
@@ -22,12 +23,15 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 function App() {
   return (
     <Router>
+      
       <Routes>
+      {/* <NavBar /> */}
       {/* <PrivateRoute path="/" element={<HomePage />} /> */}
         <Route path="/" element={<HomePage />} />
         <Route path="/facility/:id" element={<FacilityPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+       
         <Route path="/userprofile" element={<UserProfilePage />} />
       </Routes>
     </Router>

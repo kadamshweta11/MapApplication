@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import axios from 'axios';
 import  './Card';
 import '../Styling/Register.css';
+import Footer from '../components/Footer';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -84,6 +85,7 @@ const Register=()=>{
             <button onClick={()=>navigate('/login')}>Login</button>
             {message && <p>{message}</p>}
             </div>
+            <Footer /> 
         </div>
     );
 };

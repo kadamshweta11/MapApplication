@@ -1,105 +1,129 @@
+/* Home.css */
+
 /* General styling */
-.homepage-container {
+body {
+  height: 100%;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-  }
-  
-  .header, .footer {
-    background-color: #007bff;
-    /* color: white; */
-    padding: 10px 20px;
-    text-align: center;
-  }
-  .user-info {
-    display: flex;
-    align-items: center;
-  }
-  
-  .user-info span {
-    margin-right: 20px;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 20px;
-    background-color: #f5f5f5;
-    border-bottom: 1px solid #ccc;
-  }
+  font-family: Arial, sans-serif;
+}
 
-  .header h1 {
-    margin: 0;
-    font-size: 24px;
-  }
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-  .logout-button {
-    color: black;
-    padding: 10px;
-    background-color: #d0d5da;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 50%;
-  }
-  
-  .logout-button:hover {
-    background-color: #c0c5ca;
-  }
-  
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ccc;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-info span {
+  margin-right: 20px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.logout-button {
+  padding: 10px;
+  background-color: #d0d5da;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #c0c5ca;
+}
+
+.body-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden; /* Ensure the content doesn't overflow */
+}
+
+.map-container {
+  flex: 1;
+  padding: 20px;
+}
+
+.sidebar {
+  flex: 0 0 30%; /* Sidebar takes up 30% of the width */
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-left: 1px solid #ccc;
+}
+
+.footer {
+  text-align: center;
+  padding: 10px 0;
+  background: #333;
+  color: white;
+  border-top: 1px solid #ccc;
+  height: 100px;
+  position: relative;
+}
+
+form > div {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+button {
+  /* width: 100%; */
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
   .body-content {
-    display: flex;
-    flex-grow: 1;
-    overflow: hidden; /* Ensure the content doesn't overflow */
+    flex-direction: column;
   }
-  
+
   .map-container {
-    width: 70%; /* 70% of the width */
-    height: 100%;
+    order: 1; /* Display map container first */
+    margin-bottom: 20px; /* Optional: Add some space between map and sidebar on small screens */
   }
-  
+
   .sidebar {
-    width: 30%;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-left: 1px solid #ccc;
-  }
-  
-  .footer {
-    text-align: center;
-    padding: 10px 0;
-    background-color: #f5f5f5;
+    order: 2; /* Display sidebar below map container */
+    flex: 1;
+    border-left: none;
     border-top: 1px solid #ccc;
   }
-  
-  form > div {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  input, select {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-  }
-  
-  button {
-    /* width: 100%; */
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
+}

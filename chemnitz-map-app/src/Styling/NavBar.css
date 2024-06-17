@@ -1,0 +1,150 @@
+/* General styling */
+
+
+.homepage-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .header {
+    background-color: #007bff;
+    /* color: white; */
+    padding: 10px 20px;
+    text-align: center;
+  }
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-info span {
+    margin-right: 20px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ccc;
+    width: 100%; /* Ensure full width */
+    box-sizing: border-box;
+  }
+
+  .header h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  .logout-button {
+    color: black;
+    padding: 10px;
+    background-color: #d0d5da;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 50%;
+  }
+  
+  .logout-button:hover {
+    background-color: #c0c5ca;
+  }
+  
+  .body-content {
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden; /* Ensure the content doesn't overflow */
+  }
+  
+  .map-container {
+    width: 70%; /* 70% of the width */
+    height: 100%;
+  }
+  
+  .sidebar {
+    width: 30%;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-left: 1px solid #ccc;
+  }
+  
+  .footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ccc;
+  }
+  
+  form > div {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    /* width: 100%; */
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  /* for icons */
+  .submenu-content {
+    position: relative;
+    display: inline-block;
+    overflow: auto;
+  }
+  
+  .submenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    z-index: 1;
+    display: none;
+  }
+  
+  .submenu.show {
+    display: block;
+  }
+  
+  .submenu-content .bi {
+    cursor: pointer;
+  }
+  
+  .submenu-content .submenu a,
+  .submenu-content .submenu button {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .submenu-content .submenu a:hover,
+  .submenu-content .submenu button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  

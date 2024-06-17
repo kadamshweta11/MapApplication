@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 // import './Card';
 import "../Styling/Login.css";
+import Footer from '../components/Footer';
 import {getUserDataById} from '../api';
 
 
@@ -89,7 +90,10 @@ return(
       </form>
       <button onClick={() => navigate('/register')}>Register</button> {/* Add Register button */}
     </div>
+    <Footer /> 
     </div>
+    
 );
+
  };
  export default Login;

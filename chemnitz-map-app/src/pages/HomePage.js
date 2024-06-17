@@ -3,6 +3,8 @@ import MapView from '../components/MapView';
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import { Link, useNavigate } from 'react-router-dom';
 import '../Styling/Home.css';
+import NavBar from '../components/NavBar';
+// import Footer from '../components/Footer';
 import { getUserDataById } from '../api'; // Assuming you have an API function to fetch user data
 
 const HomePage = () => {
@@ -114,14 +116,16 @@ const HomePage = () => {
   };
 
   return (
+    <div className='flex-container'>
     <div className='homepage-container'>
-      <header className='header'>
+      {/* <header className='header'>
         <h1>Facilities in Chemnitz</h1>
         <div className="user-info">
           <span>{username}</span>
           <button onClick={handleLogout}>Logout</button>
         </div>
-      </header>
+      </header> */}
+      <NavBar username={username}/>
       <div className="body-content">
         {!isLoading ? (
           <>
@@ -174,10 +178,14 @@ const HomePage = () => {
           <p>Loading...</p>
         )}
       </div>
-      <footer className="footer">
-        <p>&copy; 2024 Chemnitz Facilities. All rights reserved.</p>
-      </footer>
+     <div>
+     <footer className="footer">
+      <p>&copy; 2024 Chemnitz Facilities. All rights reserved.</p>
+    </footer>
+     </div>
     </div>
+    </div>
+    
   );
 };
 

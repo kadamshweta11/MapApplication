@@ -2,7 +2,10 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
+import NavBar from '../components/NavBar';
+import '../Styling/Profile.css';
+// import Footer from '../components/Footer';
 
 const UserProfilePage = () => {
   const [userData, setUserData] = useState(null);
@@ -69,7 +72,10 @@ const navigate=useNavigate(); // Initialize useNavigate hook
   }
 //   const { username, email, favoriteFacility, homeAddress, homeCoordinates } = userData;
   return (
-    <div>
+    <div className="container">
+      <NavBar />
+      <main className="main-content">
+      <Link to="/">View Home</Link>
      <h2>User Profile</h2>
      {editMode ? (
       <div>
@@ -118,18 +124,51 @@ const navigate=useNavigate(); // Initialize useNavigate hook
 
       </div>
      ):(
-         <div>
-      <p>Username: {userData.username}</p>
-      <p>Email: {userData.email}</p>
-      <p>Favorite Facility: {userData.favoriteFacility}</p>
-      <p>Home Address: {userData.homeAddress}</p>
-      <p>Home Coordinates: {userData.homeCoordinates.coordinates.join(', ')}</p>
-      {/* Additional fields as needed */}
-      <button onClick={() => setEditMode(true)}>Edit</button>
-      <button onClick={handleDelete}>Delete Account</button>
+         <div className="profile-card">
+      <table >
+  <tr>
+    <th>Username</th>
+    <td>{userData.username}</td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    
+    <td>{userData.email}</td>
+  </tr>
+  <tr>
+    <th>Favorite Facility:</th>
+    <td>{userData.favoriteFacility}</td>
+   
+  </tr>
+  <tr>
+    <th>Home Address</th>
+    <td>{userData.homeAddress}</td>
+   
+  </tr>
+  <tr>
+    <th>Home Coordinates</th>
+    <td>{userData.homeCoordinates.coordinates.join(', ')}</td>
+   
+  </tr>
+
+  {/* Additional fields as needed */}
+      <tr>
+        <td><button onClick={() => setEditMode(true)}>Update Profile</button></td>
+        <td><button onClick={handleDelete}>Delete Account</button></td>
+      </tr>
+      
+      
+      </table>
     </div>
      )}
+     </main>
+     <div className='foot-cont'>
+ <footer className="footer">
+      <p>&copy; 2024 Chemnitz Facilities. All rights reserved.</p>
+    </footer>
     </div>
+    </div>
+    
   );
 };
 

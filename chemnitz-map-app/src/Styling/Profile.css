@@ -1,0 +1,119 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .main-content {
+    /* flex: 1; */
+    padding: 20px;
+  }
+  .header{
+    width: 100%;
+    background-color: #713f84;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .foot-cont .footer {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  .foot-cont {
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  table, th, td{
+    /* width: 100%; */
+    border: #333 solid 1px;
+    border-collapse: collapse;
+    padding: 10px;
+  }
+  .profile-card {
+    display: grid;
+    /* grid-template-columns: 1fr 1fr; Two equal columns */
+    gap: 10px; /* Gap between columns */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    max-width: 600px; /* Adjust as needed */
+    margin: 0 auto; /* Center align on the page */
+  }
+  .profile-card p {
+    margin: 5px 0;
+  }
+  .profile-card button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .profile-card button:hover {
+    background-color: #0056b3;
+  }
+  
+  .edit-mode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .edit-mode label {
+    margin-bottom: 10px;
+  }
+  
+  .edit-mode input,
+  .edit-mode select {
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .edit-mode button {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  /* Responsive design for screens larger than 1024px */
+@media (min-width: 1024px) {
+    .header {
+        /* justify-content: space-around;
+        padding: 10px 40px; */
+    }
+
+    .main-content {
+        padding: 40px;
+    }
+
+    .profile-card {
+        width: 40%;
+    }
+}
+  
