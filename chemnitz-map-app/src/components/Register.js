@@ -38,6 +38,7 @@ const Register=()=>{
     };
 
     return(
+        <div>
         <div className="register-container">
             <div className='card'>
             <h1>
@@ -85,7 +86,9 @@ const Register=()=>{
             <button onClick={()=>navigate('/login')}>Login</button>
             {message && <p>{message}</p>}
             </div>
-            <Footer /> 
+            
+        </div>
+        <Footer /> 
         </div>
     );
 };

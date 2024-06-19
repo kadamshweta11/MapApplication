@@ -3,11 +3,20 @@ const mongoose=require('mongoose');
 const bodyParser=require('body-parser');
 const cors=require('cors');
 const dotenv = require('dotenv');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swagger');
+
 
 dotenv.config();
 
 const app=express();
 const port=5000;
+
+// Setup Swagger documentation
+// swaggerDocs(app);
+
+// Initialize Swagger UI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // middleware
 app.use(cors({
@@ -49,6 +58,8 @@ app.use('/api/socialchildprojects',SocialChildProjectRoutes);
 app.use('/api/socialteenagerprojects',SocialTeenagerProjectRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/user',  userRoutes);
+
+
 
 //start the server
 app.listen(port,()=>{

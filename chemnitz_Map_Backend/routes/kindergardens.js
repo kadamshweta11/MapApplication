@@ -3,6 +3,26 @@ const router=express.Router();
 const Kindergarden=require('../models/Kindergarden');
 
 // get all kindergardens
+
+/**
+ * @swagger
+ * /api/kindergardens:
+ *   get:
+ *     summary: Get all kindergardens
+ *     tags:
+ *       - Kindergardens
+ *     responses:
+ *       200:
+ *         description: A list of all kindergardens
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Kindergarden'
+ *       500:
+ *         description: Server error
+ */
 router.get('/',async(req,res)=>{
     try{
         const kindergardens=await Kindergarden.find();

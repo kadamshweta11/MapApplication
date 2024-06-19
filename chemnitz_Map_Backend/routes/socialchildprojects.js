@@ -3,6 +3,26 @@ const router = express.Router();
 const SocialChildProject = require('../models/SocialChildProject');
 
 // Get all social child projects
+
+/**
+ * @swagger
+ * /api/socialchildprojects:
+ *   get:
+ *     summary: Get all social child projects
+ *     tags:
+ *       - Social Child Projects
+ *     responses:
+ *       200:
+ *         description: A list of all social child projects
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/SocialChildProject'
+ *       500:
+ *         description: Server error
+ */
 router.get('/', async (req, res) => {
     try {
       const projects = await SocialChildProject.find();

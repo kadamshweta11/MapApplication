@@ -3,6 +3,27 @@ const router=express.Router();
 const SocialTeenagerProject=require('../models/SocialTeenagerProject');
 
 //get all social teenager projects
+
+
+/**
+ * @swagger
+ * /api/socialteenagerprojects:
+ *   get:
+ *     summary: Get all social teenager projects
+ *     tags:
+ *       - Social Teenager Projects
+ *     responses:
+ *       200:
+ *         description: A list of all social teenager projects
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/SocialTeenagerProject'
+ *       500:
+ *         description: Server error
+ */
 router.get('/',async(req,res)=>{
     try{
         const socialTeenagerProjects=await SocialTeenagerProject.find();

@@ -4,6 +4,26 @@ const School=require('../models/School');
 const { json } = require('body-parser');
 
 // Get all schools
+
+/**
+ * @swagger
+ * /api/schools:
+ *   get:
+ *     summary: Get all schools
+ *     tags:
+ *       - Schools
+ *     responses:
+ *       200:
+ *         description: A list of schools
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/School'
+ *       500:
+ *         description: Server error
+ */
 router.get('/',async(req,res)=>{
     try{
         const schools=await School.find();

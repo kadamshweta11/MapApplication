@@ -59,6 +59,7 @@ const handleLogin=async(data)=>{
     }
 };
 return(
+  <div>
   <div className="login-container">
     <div className="card">
         <h1>Login</h1>
@@ -90,7 +91,9 @@ return(
       </form>
       <button onClick={() => navigate('/register')}>Register</button> {/* Add Register button */}
     </div>
-    <Footer /> 
+    
+    </div>
+    <Footer />
     </div>
     
 );

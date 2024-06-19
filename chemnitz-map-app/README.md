@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Manual To Run the Application
+Technology Used= MERN Stack
+# Getting Started with Map Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Connection up DataBase 
+1. Create a ChemnitzData Database in MongoDb Compass.
+2. Import All the Datasets(schools,kindergardens,socialTeenagerProjects,socialChildProjects) in the MongoDb compass.
+3. Save and Connect Your ChemnitzData.
 
-## Available Scripts
+Connection String= mongodb://localhost:27017/ChemnitzData
 
-In the project directory, you can run:
+Once the Connection is Successfull You are ready To run Backend.
 
-### `npm start`
+# Steps To run BackEnd
+Server Port=5000
+To Run the backend Make sure you have node installed in the system.If package.json is missing then 'npm init'.
+After the package.json is integrated its time to install all the dependencies i.e node_modules so go ahead and type 'npm install' in cmd.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Moving Forward to manually create a .env file as it is present in .gitignore so in folder chemnitz_Map_Backend->.env file
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Copy paste the contents
+```
+MONGO_URI=mongodb://localhost:27017/ChemnitzData
+PORT=3000
+JWT_SECRET=databasemapapplication12
+OPENCAGE_API_KEY=b42de9e0e0f3455a941eb9db644f655d
 
-### `npm test`
+```
+1. After Settign up all initial configuration lets run the server  go to the folder chemnitz_Map_Backend and run 'node server.js' cmd.
+2. Once the server is started you are good to go for starting the Front End. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+# Steps To run Front End 
+Port=3000
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+For Displaying the map on front End i am making use of React-leaflet.
+This library i am using to integrate the leaftlet mapping with React which can help me to create interactive maps in react application.
+for eg= 
+"axios": "^1.7.2",
+    "bootstrap-icons": "^1.11.3",
+    "leaflet": "^1.9.4",
+    "leaflet-geosearch": "^4.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.51.5",
+    "react-icons": "^5.2.1",
+    "react-leaflet": "^4.2.1",
+    "react-router-dom": "^6.23.1",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To run the Front End go to folder chemnitz_map_app->npm start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Application will run on the port localhost/3000.
 
-### `npm run eject`
+### To Check the API Documentation
+Run the backend with (node server.js) and then check APIs with swagger
+http://localhost:5000/api-docs/#/
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Add the token from (Console->Application->token)
+which is further useful for User Operations 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Now You can test All the APIs....
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+If you have any problem with datastructure then refer the schemas sections at the bottom to understand properly number or string...
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
