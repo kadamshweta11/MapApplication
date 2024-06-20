@@ -75,7 +75,7 @@ const navigate=useNavigate();
     <div className="container">
       <NavBar />
       <main className="main-content">
-      <Link to="/">View Home</Link>
+      <Link to="/home">View Home</Link>
      <h2>User Profile</h2>
      {editMode ? (
       <div>

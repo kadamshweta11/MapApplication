@@ -129,7 +129,8 @@ const nearestFacilitiesSet = new Set();
             <p><strong>Telephone:</strong> {facility.TELEFON}</p>
             <p><strong>Fax:</strong> {facility.FAX}</p>
             <p><strong>Email:</strong> {facility.EMAIL}</p>
-            <p><strong>Website:</strong> <a href={facility.WWW} target="_blank" rel="noopener noreferrer">{facility.WWW}</a></p>
+            <p><strong>Website:</strong> <a href="https://portal-chemnitz.opendata.arcgis.com/datasets/4c331993dab54b49bbc9debfc5928ec3_0/explore?location=50.822923%2C12.887629%2C11.17" 
+            target="_blank" rel="noopener noreferrer">Explore School Data</a></p>
             <p><strong>Profile:</strong> {facility.PROFILE}</p>
             <p><strong>Provider:</strong> {facility.TRAEGER}</p>
           </div>
