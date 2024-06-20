@@ -49,6 +49,18 @@ for eg=
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
 
+    for backend package.json:
+    "axios": "^1.7.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.4.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+
 To run the Front End go to folder chemnitz_map_app->npm start
 
 Application will run on the port localhost/3000.
@@ -62,5 +74,5 @@ which is further useful for User Operations
 
 Now You can test All the APIs....
 
-If you have any problem with datastructure then refer the schemas sections at the bottom to understand properly number or string...
+If you have any problem with datastructure then refer the schemas sections at the bottom in swagger to understand properly number or string...
 

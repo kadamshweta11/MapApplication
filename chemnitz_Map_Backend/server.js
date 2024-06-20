@@ -12,8 +12,6 @@ dotenv.config();
 const app=express();
 const port=5000;
 
-// Setup Swagger documentation
-// swaggerDocs(app);
 
 // Initialize Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
@@ -49,7 +47,7 @@ const SocialChildProjectRoutes=require('./routes/socialchildprojects');
 const SocialTeenagerProjectRoutes=require('./routes/socialteenagerprojects');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
-// const { protect } = require('./middleware/auth');
+
 
 //use routes
 app.use('/api/schools',schoolRoutes);

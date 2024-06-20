@@ -37,15 +37,12 @@ const swaggerDefinition = {
 const options = {
   swaggerDefinition,
   // Path to the API docs
-  apis: ['./routes/*.js'], // files containing annotations for the Swagger doc
+  apis: ['./routes/*.js'], 
 };
 
 // Initialize swagger-jsdoc
 const swaggerSpec = swaggerJSDoc(options);
 
-// const swaggerDocs = (app) => {
-//   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-// };
 
 
 module.exports = swaggerSpec;

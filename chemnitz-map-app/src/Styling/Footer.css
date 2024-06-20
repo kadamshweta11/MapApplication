@@ -1,24 +1,12 @@
-/* src/Styling/Footer.css */
-/* .footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1rem 0;
-    /* padding: 10px; */
-    /* position: relative;
-    bottom: 0;
-    width: 100%;
-    border-top: 1px solid #ccc;
-  height: 100px;
-  }  */
+
   
-  /* Ensure the body takes the full height of the viewport */
+  
 html, body {
     height: 100%;
     margin: 0;
 }
 
-/* Make the container take the full height of the viewport and use flexbox */
+
 .container {
     display: flex;
     flex-direction: column;
@@ -27,7 +15,7 @@ html, body {
 
 
 
-/* Style the footer */
+
 footer {
     background: #333;
     color: white;

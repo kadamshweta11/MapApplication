@@ -1,24 +1,20 @@
 import React,{useState} from 'react';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-// import './Card';
+import { useNavigate } from 'react-router-dom'; 
 import "../Styling/Login.css";
 import Footer from '../components/Footer';
 import {getUserDataById} from '../api';
 
 
  const Login=()=>{
-  const { register, handleSubmit, formState: { errors } } = useForm();
+const { register, handleSubmit, formState: { errors } } = useForm();
 const [error,setError]=useState('');
 const [success, setSuccess] = useState('');
-const navigate = useNavigate(); // Use useNavigate hook
+const navigate = useNavigate(); 
 
 
 const handleLogin=async(data)=>{
-
-    // e.preventDefault();
-    // console.log('handleLogin called with data:', data);
     const { email, password } = data;
     try{
         const response=await axios.post('http://localhost:5000/api/auth/login',data);
@@ -31,31 +27,21 @@ const handleLogin=async(data)=>{
       localStorage.setItem('token', token);
       localStorage.setItem('userId', userId);
       localStorage.setItem('username', email);
+      
       // Fetch user data after successful login
-      // Fetch user data after successful login
-      const userData = await getUserDataById(userId); // Ensure userId is available here
+      const userData = await getUserDataById(userId); 
       console.log('User Data:', userData);
       setSuccess('Login Successful!');
-          setError(''); // clear error message
-          // localStorage.setItem('token', response.data.token);
-          // Retrieve username from the form data
-      // const storedUsername = email;
-      
-          // Store username in local storage
-      // localStorage.setItem('username', storedUsername);
-      // console.log('User Data:', userDataResponse.data); // Log user data for verification
-      // Optionally store user data in localStorage or state
-      // localStorage.setItem('userData', JSON.stringify(userDataResponse.data));
-          // window.location.href = '/';
-          navigate('/'); // Redirect to home page
+          setError(''); 
+          navigate('/home'); // Redirect to home page
         } else {
           setError(response.data.message);
-          setSuccess(''); // clear success message
+          setSuccess(''); 
         }
     }catch(error){
         console.log('Error during login:', error);
       setError('Invalid credentials. Please try again.');
-      setSuccess(''); // clear success message
+      setSuccess(''); 
     }
 };
 return(
@@ -89,7 +75,7 @@ return(
         <button type="submit">Login</button>
        
       </form>
-      <button onClick={() => navigate('/register')}>Register</button> {/* Add Register button */}
+      <button onClick={() => navigate('/register')}>Register</button> 
     </div>
     
     </div>

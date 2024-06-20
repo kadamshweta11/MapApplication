@@ -33,6 +33,7 @@ router.get('/',async(req,res)=>{
         }
 });
 
+// This is for practice purpose not used anywhere
 //create a new social teenager projects
 router.post('/',async(req,res)=>{
     const socialTeenagerProject = new SocialTeenagerProject(req.body);

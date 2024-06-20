@@ -34,6 +34,7 @@ router.get('/',async(req,res)=>{
     }
 });
 
+// This is for practice purpose not used anywhere
 // Create a new School
 router.post('/',async(req,res)=>{
 const school=new School(req.body);

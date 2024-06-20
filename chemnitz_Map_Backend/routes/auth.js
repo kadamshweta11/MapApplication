@@ -65,10 +65,10 @@ router.post('/register',async(req,res)=>{
             username,
             email,
             password,
-            favoriteFacility, // Add favoriteFacility to the new user object
-            homeAddress, // Add homeAddress to the new user object
+            favoriteFacility, 
+            homeAddress, 
             homeCoordinates: {
-                type: 'Point', // Adjust as per your schema
+                type: 'Point', // Adjust as per schema
                 coordinates: [lng, lat], // Example coordinates; adjust as needed
             },
         });
@@ -77,7 +77,7 @@ router.post('/register',async(req,res)=>{
         res.status(201).json({message:'User Registered Successfully'});
 
     }catch(error){
-        console.error('Error during registration:', error);  // Debugging s
+        console.error('Error during registration:', error);  // Debugging 
         console.log(error);
         res.status(500).json({message:'Server Error'});
     }
@@ -112,8 +112,8 @@ router.post('/register',async(req,res)=>{
  */
 //Login  a User
 router.post('/login',async(req,res)=>{
-    console.log('Login endpoint hit'); // Add this line
-    console.log(req.body); // Log request body
+    console.log('Login endpoint hit'); 
+    console.log(req.body); 
     const {email,password}=req.body;
 
     if (!email || !password) {
@@ -122,32 +122,32 @@ router.post('/login',async(req,res)=>{
 
     try{
         const user=await User.findOne({email});
-        console.log('User found:', user); // Add this line
+        console.log('User found:', user); 
         if(!user){
-            console.log('User not found'); // Add this line
+            console.log('User not found'); 
             return res.status(400).json({message:'Invalid Credentials'});
         }
-        console.log('Entered password:', password); // Log entered password
+        console.log('Entered password:', password); 
         console.log('Stored hashed password:', user.password);
         //  const hashedPassword = await bcrypt.hash(password, 10);
         // const isMatch = await bcrypt.compare(password, user.password);
         const isMatch = password === user.password;
         console.log('Password match result:', isMatch);
         if (!isMatch) {
-            console.log('Password does not match'); // Add this line
+            console.log('Password does not match'); 
             return res.status(400).json({ message: 'Invalid Password credentials' });
         }
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
             expiresIn: '1h',
         });
         res.status(201).json({ message: 'User Logged In successfully', token,
-            userId: user._id, // Send user ID in the response
+            userId: user._id, 
              });
         
     }
     catch (error) {
        
-        console.error('Error during login:', error); // Add this line
+        console.error('Error during login:', error); 
         console.error(error.message);
         res.status(500).json({ message: 'Server error' });
     }

@@ -10,10 +10,10 @@ const Register=()=>{
     const [username,setUsername]=useState('');
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
-    const [favoriteFacility, setFavoriteFacility] = useState(''); // Define favoriteFacility state
+    const [favoriteFacility, setFavoriteFacility] = useState(''); 
     const [homeAddress, setHomeAddress] = useState('');
     const [message,setMessage]=useState('');
-    const navigate = useNavigate(); // Use useNavigate hook
+    const navigate = useNavigate(); 
 
     const handleSubmit=async(e)=>{
         e.preventDefault();
@@ -83,7 +83,7 @@ const Register=()=>{
     </div>
                 <button type="submit">Register</button>
             </form>
-            <button onClick={()=>navigate('/login')}>Login</button>
+            <button onClick={()=>navigate('/')}>Login</button>
             {message && <p>{message}</p>}
             </div>
             

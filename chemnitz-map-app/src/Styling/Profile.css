@@ -15,7 +15,7 @@ html, body {
   }
   
   .main-content {
-    /* flex: 1; */
+   
     padding: 20px;
   }
   .header{
@@ -51,21 +51,21 @@ html, body {
     align-items: center;
   }
   table, th, td{
-    /* width: 100%; */
+   
     border: #333 solid 1px;
     border-collapse: collapse;
     padding: 10px;
   }
   .profile-card {
     display: grid;
-    /* grid-template-columns: 1fr 1fr; Two equal columns */
-    gap: 10px; /* Gap between columns */
+   
+    gap: 10px; 
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
-    max-width: 600px; /* Adjust as needed */
-    margin: 0 auto; /* Center align on the page */
+    max-width: 600px; 
+    margin: 0 auto; 
   }
   .profile-card p {
     margin: 5px 0;
@@ -102,7 +102,7 @@ html, body {
     margin-right: 10px;
     margin-bottom: 10px;
   }
-  /* Responsive design for screens larger than 1024px */
+  
 @media (min-width: 1024px) {
     .header {
         /* justify-content: space-around;

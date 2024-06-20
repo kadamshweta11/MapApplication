@@ -5,13 +5,13 @@ import axios from 'axios';
 import { useNavigate,Link } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import '../Styling/Profile.css';
-// import Footer from '../components/Footer';
+
 
 const UserProfilePage = () => {
   const [userData, setUserData] = useState(null);
-  const [editMode, setEditMode] = useState(false); // State for edit mode
-  const [updatedData, setUpdatedData] = useState({}); // State for updated user data
-const navigate=useNavigate(); // Initialize useNavigate hook
+  const [editMode, setEditMode] = useState(false); 
+  const [updatedData, setUpdatedData] = useState({}); 
+const navigate=useNavigate(); 
   useEffect(() => {
     // Fetch user data from backend API
     const fetchUserData = async () => {
@@ -32,7 +32,7 @@ const navigate=useNavigate(); // Initialize useNavigate hook
     };
 
     fetchUserData();
-  }, []); // Run only once on component mount
+  }, []); 
 
   
   const handleDelete=async()=>{
@@ -70,7 +70,7 @@ const navigate=useNavigate(); // Initialize useNavigate hook
   if (!userData) {
     return <div>Wait To Get User Data Loading...</div>; // Placeholder for loading state
   }
-//   const { username, email, favoriteFacility, homeAddress, homeCoordinates } = userData;
+
   return (
     <div className="container">
       <NavBar />
@@ -151,7 +151,6 @@ const navigate=useNavigate(); // Initialize useNavigate hook
    
   </tr>
 
-  {/* Additional fields as needed */}
       <tr>
         <td><button onClick={() => setEditMode(true)}>Update Profile</button></td>
         <td><button onClick={handleDelete}>Delete Account</button></td>

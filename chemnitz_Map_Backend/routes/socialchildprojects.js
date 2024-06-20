@@ -32,6 +32,7 @@ router.get('/', async (req, res) => {
     }
   });
   
+  // This is for practice purpose not used anywhere
   // Create a new social child project
   router.post('/', async (req, res) => {
     const project = new SocialChildProject(req.body);

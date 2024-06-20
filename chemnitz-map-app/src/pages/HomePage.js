@@ -4,8 +4,7 @@ import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import { Link, useNavigate } from 'react-router-dom';
 import '../Styling/Home.css';
 import NavBar from '../components/NavBar';
-// import Footer from '../components/Footer';
-import { getUserDataById } from '../api'; // Assuming you have an API function to fetch user data
+import { getUserDataById } from '../api'; 
 
 const HomePage = () => {
   const [favouriteFacility, setFavouriteFacility] = useState('');
@@ -13,38 +12,37 @@ const HomePage = () => {
   const [homeCoordinates, setHomeCoordinates] = useState(null);
   const [nearestFacilityList, setNearestFacilityList] = useState([]);
   const [username, setUsername] = useState('');
-  const [isLoading, setIsLoading] = useState(true); // Loading state
+  const [isLoading, setIsLoading] = useState(true); 
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserData = async () => {
       const userId = localStorage.getItem('userId');
       try {
-        const userData = await getUserDataById(userId); // Fetch user data
+        const userData = await getUserDataById(userId); 
         setFavouriteFacility(userData.favoriteFacility);
         setHomeAddress(userData.homeAddress);
         setHomeCoordinates(userData.homeCoordinates.coordinates); // Set home coordinates from fetched data
-        setUsername(userData.username); // Set username if available
+        setUsername(userData.username); 
         setIsLoading(false); // Turn off loading state after data is fetched
       } catch (error) {
         console.error('Error fetching user data:', error);
         setIsLoading(false); // Handle error case: turn off loading state
-        // Optionally, handle error state or display a message to the user
+        
       }
     };
 
     fetchUserData();
-  }, []); // Empty dependency array ensures useEffect runs once on mount
+  }, []); 
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
-    navigate('/login'); // Redirect to login page
+    navigate('/login'); 
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission for filtering or updating data
     const results = await geocodeAddress(homeAddress);
     if (results && results.length > 0) {
       const { x, y } = results[0];
@@ -118,13 +116,6 @@ const HomePage = () => {
   return (
     <div className='flex-container'>
     <div className='homepage-container'>
-      {/* <header className='header'>
-        <h1>Facilities in Chemnitz</h1>
-        <div className="user-info">
-          <span>{username}</span>
-          <button onClick={handleLogout}>Logout</button>
-        </div>
-      </header> */}
       <NavBar username={username}/>
       <div className="body-content">
         {!isLoading ? (
@@ -142,6 +133,7 @@ const HomePage = () => {
               <Link to="/userprofile">View Profile</Link>
               <form onSubmit={handleSubmit}>
                 <div>
+                  <h3>Searching Form</h3>
                   <label>Favourite Facility</label>
                   <select value={favouriteFacility} onChange={handleFavouriteChange}>
                     <option value="">Select a Facility</option>

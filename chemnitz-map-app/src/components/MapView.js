@@ -15,14 +15,11 @@ const createCustomIcon = (color, name) => L.divIcon({
            </div>
          </div>`,
   className: 'custom-icon',
-  iconAnchor: [12, 41] // Adjust this to position the icon correctly
+  iconAnchor: [12, 41] 
 });
 
-// const schoolIcon=createCustomIcon('blue');
-// const kindergardenIcon=createCustomIcon('green');
-// const socialChildProjectIcon=createCustomIcon('violet');
-// const socialTeenagerProjectIcon=createCustomIcon('red');
-const homeIcon = createCustomIcon('#EA4335', '2rem', 'bold'); // Custom icon for home address
+
+const homeIcon = createCustomIcon('#EA4335', '2rem', 'bold'); 
 
 const MapView = ({favouriteFacility,homeCoordinates,setNearestFacilityList}) => {
   const [schools, setSchools] = useState([]);
@@ -30,7 +27,7 @@ const MapView = ({favouriteFacility,homeCoordinates,setNearestFacilityList}) => 
   const [socialChildProjects, setSocialChildProjects] = useState([]);
   const [socialTeenagerProjects, setSocialTeenagerProjects] = useState([]);
   const [filteredFacilities,setFilteredFacilities]=useState([]);
-  // const [nearestFacilityList, setNearestFacilityList] = useState([]);
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -119,8 +116,7 @@ const nearestFacilitiesSet = new Set();
     setNearestFacilityList(nearestFacilities);
 }, [favouriteFacility, homeCoordinates, schools, kindergardens, socialChildProjects, socialTeenagerProjects,setNearestFacilityList]);
 
-// setFilteredFacilities(nearestFacilityList);
-//   },[favouriteFacility,homeCoordinates,schools,kindergardens,socialChildProjects,socialTeenagerProjects]);
+
   
   const renderPopupContent = (facility, type) => {
     switch (type) {
@@ -203,30 +199,14 @@ const nearestFacilitiesSet = new Set();
             ? createCustomIcon('green', facility.BEZEICHNUNG)
             : favouriteFacility === 'socialChildProjects'
             ? createCustomIcon('violet', facility.TRAEGER)
-            : createCustomIcon('red', facility.TRAEGER)
+            : createCustomIcon('orange', facility.TRAEGER)
         }
       >
         <Popup>{renderPopupContent(facility, favouriteFacility)}</Popup>
-        {/* <div className="facility-label">
-            <strong>{facility.BEZEICHNUNG}</strong>
-          </div> */}
+        
+          
       </Marker>
     ))}
-    {/* <style>
-        {`
-          .facility-label {
-            position: absolute;
-            bottom: 8px;
-            left: -25px;
-            width: 100px;
-            background-color: white;
-            border: 1px solid #ccc;
-            padding: 2px;
-            font-size: 0.75rem;
-            text-align: center;
-          }
-        `}
-        </style> */}
   </MapContainer>
  )}
   
