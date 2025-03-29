@@ -64,3 +64,8 @@ Now You can test All the APIs....
 
 If you have any problem with datastructure then refer the schemas sections at the bottom to understand properly number or string...
 
+###ouputs
+![home](https://github.com/user-attachments/assets/bd964eab-52ee-4486-9ce9-d53fe920f1a5)
+
+
+
